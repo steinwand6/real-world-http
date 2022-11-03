@@ -20,7 +20,7 @@ fn handle_connection(mut stream: TcpStream) -> Result<(), Box<dyn Error>> {
 
     println!("Request: {}", String::from_utf8_lossy(&buffer[..]));
     stream.write_all(
-        "HTTP/1.1 200 OK\n\n<html><body>hello</body></html>\n"
+        "HTTP/1.1 200 OK\nContent-Type: text/html; charset=utf-8\n<html><body>hello</body></html>\n"
             .to_string()
             .as_bytes(),
     )?;
